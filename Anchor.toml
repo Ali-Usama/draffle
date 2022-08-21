@@ -1,11 +1,14 @@
 anchor_version = "0.17.0"
 
 [provider]
-cluster = "mainnet"
-wallet = "~/.config/solana/id.json"
+cluster = "localnet"
+wallet = "/home/axiom/Desktop/Workspace/Axiom/BLOCKCHAIN/Learning/SeCbhUgwfifKUVc3Ut5Z7hRCRMsPyFr1Z4hyargXYYv.json"
 
-[programs.mainnet]
-draffle = "dRafA7ymQiLKjR5dmmdZC9RPX4EQUjqYFB3mWokRuDs"
+[programs.localnet]
+draffle = "EUXVqGpJMe1kxkPh7ny6GKz474N6xPSqiCfFzyf5a9B8"
+dispenser = "H2wT4wRhtCFr7szZiiddcC8HeYtsSdFh7bhszScTkTTD"
+community-staking = "GFevbGG4YUNsXXAXv4VMfhvGc74yvXmytv3cFqQ3joJY"
+
 
 [scripts]
 test = "mocha -t 1000000 tests"

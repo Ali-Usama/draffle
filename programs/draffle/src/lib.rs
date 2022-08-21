@@ -26,7 +26,7 @@ pub mod treasury {
 declare_id!("dRaFFLe111111111111111111111111111111111112");
 
 #[cfg(feature = "production")]
-declare_id!("dRafA7ymQiLKjR5dmmdZC9RPX4EQUjqYFB3mWokRuDs");
+declare_id!("EUXVqGpJMe1kxkPh7ny6GKz474N6xPSqiCfFzyf5a9B8");
 
 #[program]
 pub mod draffle {

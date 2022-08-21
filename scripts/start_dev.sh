@@ -67,50 +67,52 @@ WSOL=So11111111111111111111111111111111111111112
 echo "Done"
 
 echo "Creating sample mints, accounts, and funding them..."
-spl-token create-token ${SCRIPT_PATH}/sample_accounts/prize-nft1-keypair.json --decimals 0
-spl-token create-account ${NFT1_ADDRESS}
-spl-token mint ${NFT1_ADDRESS} 1
-
-spl-token create-token ${SCRIPT_PATH}/sample_accounts/prize-nft2-keypair.json --decimals 0
-spl-token create-account ${NFT2_ADDRESS}
-spl-token mint ${NFT2_ADDRESS} 1
-
-spl-token create-token ${SCRIPT_PATH}/sample_accounts/prize-nft3-keypair.json --decimals 0
-spl-token create-account ${NFT3_ADDRESS}
-spl-token mint ${NFT3_ADDRESS} 1
-
-spl-token create-token ${SCRIPT_PATH}/sample_accounts/prize-nft4-keypair.json --decimals 0
-spl-token create-account ${NFT4_ADDRESS}
-spl-token mint ${NFT4_ADDRESS} 1
-
-spl-token create-token ${SCRIPT_PATH}/sample_accounts/prize-nft5-keypair.json --decimals 0
-spl-token create-account ${NFT5_ADDRESS}
-spl-token mint ${NFT5_ADDRESS} 1
-
-spl-token create-token ${SCRIPT_PATH}/sample_accounts/dev-mint-keypair.json --decimals 6
-spl-token create-account ${MINT1_ADDRESS}
-spl-token mint ${MINT1_ADDRESS} 3000000
-
-spl-token create-token ${SCRIPT_PATH}/sample_accounts/prize-mint1-keypair.json --decimals 0
-spl-token create-account ${MINT2_ADDRESS}
-spl-token mint ${MINT2_ADDRESS} 30000
-
-spl-token create-token ${SCRIPT_PATH}/sample_accounts/prize-mint2-keypair.json --decimals 2
-spl-token create-account ${MINT3_ADDRESS}
-spl-token mint ${MINT3_ADDRESS} 30000
-
-solana airdrop 10000
-solana transfer --allow-unfunded-recipient ${TEST_USER_ADDRESS} 0.1
-solana transfer --allow-unfunded-recipient ${MINT1_FAUCET_ADDRESS} 100
-
-spl-token transfer --allow-unfunded-recipient --fund-recipient  ${MINT1_ADDRESS} 3 ${TEST_USER_ADDRESS}
-spl-token transfer --allow-unfunded-recipient --fund-recipient  ${MINT1_ADDRESS} 50 ${MINT1_FAUCET_ADDRESS}
-echo "Done"
+#spl-token create-token ${SCRIPT_PATH}/sample_accounts/prize-nft1-keypair.json --decimals 0
+#spl-token create-account ${NFT1_ADDRESS}
+#spl-token mint ${NFT1_ADDRESS} 1
+#
+#spl-token create-token ${SCRIPT_PATH}/sample_accounts/prize-nft2-keypair.json --decimals 0
+#spl-token create-account ${NFT2_ADDRESS}
+#spl-token mint ${NFT2_ADDRESS} 1
+#
+#spl-token create-token ${SCRIPT_PATH}/sample_accounts/prize-nft3-keypair.json --decimals 0
+#spl-token create-account ${NFT3_ADDRESS}
+#spl-token mint ${NFT3_ADDRESS} 1
+#
+#spl-token create-token ${SCRIPT_PATH}/sample_accounts/prize-nft4-keypair.json --decimals 0
+#spl-token create-account ${NFT4_ADDRESS}
+#spl-token mint ${NFT4_ADDRESS} 1
+#
+#spl-token create-token ${SCRIPT_PATH}/sample_accounts/prize-nft5-keypair.json --decimals 0
+#spl-token create-account ${NFT5_ADDRESS}
+#spl-token mint ${NFT5_ADDRESS} 1
+#
+#spl-token create-token ${SCRIPT_PATH}/sample_accounts/dev-mint-keypair.json --decimals 6
+#spl-token create-account ${MINT1_ADDRESS}
+#spl-token mint ${MINT1_ADDRESS} 3000000
+#
+#spl-token create-token ${SCRIPT_PATH}/sample_accounts/prize-mint1-keypair.json --decimals 0
+#spl-token create-account ${MINT2_ADDRESS}
+#spl-token mint ${MINT2_ADDRESS} 30000
+#
+#spl-token create-token ${SCRIPT_PATH}/sample_accounts/prize-mint2-keypair.json --decimals 2
+#spl-token create-account ${MINT3_ADDRESS}
+#spl-token mint ${MINT3_ADDRESS} 30000
+#
+#solana airdrop 10000
+#solana transfer --allow-unfunded-recipient ${TEST_USER_ADDRESS} 0.1
+#solana transfer --allow-unfunded-recipient ${MINT1_FAUCET_ADDRESS} 100
+#
+#spl-token transfer --allow-unfunded-recipient --fund-recipient  ${MINT1_ADDRESS} 3 ${TEST_USER_ADDRESS}
+#spl-token transfer --allow-unfunded-recipient --fund-recipient  ${MINT1_ADDRESS} 50 ${MINT1_FAUCET_ADDRESS}
+#echo "Done"
 
 echo "Creating sample raffles..."
 cd ${ROOT_PATH}
 cargo build
+echo ${MINT1_ADDRESS}
 ${SCRIPT_PATH}/../target/debug/draffle create-raffle ${MINT1_ADDRESS} 500000 "$("$cdate" --utc -d "+2 minute" '+%Y-%m-%d %H:%M')" "${SCRIPT_PATH}/sample_accounts/raffle/entrants1-keypair.json" # HB616GLCZoj7vkHTdG8qjp2jPSYgoMd6RHUxnivXAwXm
+echo "Failed"
 ${SCRIPT_PATH}/../target/debug/draffle add-prize HB616GLCZoj7vkHTdG8qjp2jPSYgoMd6RHUxnivXAwXm ${MINT2_ADDRESS} 25 0
 ${SCRIPT_PATH}/../target/debug/draffle add-prize HB616GLCZoj7vkHTdG8qjp2jPSYgoMd6RHUxnivXAwXm ${NFT1_ADDRESS} 1 1
 ${SCRIPT_PATH}/../target/debug/draffle add-prize HB616GLCZoj7vkHTdG8qjp2jPSYgoMd6RHUxnivXAwXm ${MINT3_ADDRESS} 334 2

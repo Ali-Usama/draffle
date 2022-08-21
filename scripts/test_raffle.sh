@@ -8,7 +8,7 @@ ROOT_PATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )/../"
 [ -f "${SCRIPT_PATH}/../app/.env" ] && source "${SCRIPT_PATH}/../app/.env"
 [ -f "${SCRIPT_PATH}/../app/.env.local" ] && source "${SCRIPT_PATH}/../app/.env.local"
 
-${SCRIPT_PATH}/parse-and-generate-idl-types.sh
+#${SCRIPT_PATH}/parse-and-generate-idl-types.sh
 
 set -m
 DRAFFLE_PROGRAM_ID="$(solana address -k ${SCRIPT_PATH}/sample_accounts/draffle-keypair.json)"
@@ -43,20 +43,20 @@ MINT1_FAUCET_ADDRESS="$(solana address -k ${SCRIPT_PATH}/sample_accounts/user2-k
 echo "${MINT1_FAUCET_ADDRESS}"
 
 echo "Creating sample mints, accounts, and funding them..."
-spl-token create-token ${SCRIPT_PATH}/sample_accounts/prize-nft1-keypair.json --decimals 0
-spl-token create-account ${NFT1_ADDRESS}
-spl-token mint ${NFT1_ADDRESS} 1
-
-spl-token create-token ${SCRIPT_PATH}/sample_accounts/prize-nft2-keypair.json --decimals 0
-spl-token create-account ${NFT2_ADDRESS}
-spl-token mint ${NFT2_ADDRESS} 1
-
-spl-token create-token ${SCRIPT_PATH}/sample_accounts/dev-mint-keypair.json --decimals 6
-spl-token create-account ${MINT1_ADDRESS}
-spl-token mint ${MINT1_ADDRESS} 3000000
-
-solana transfer --allow-unfunded-recipient ${MINT1_FAUCET_ADDRESS} 100
-spl-token transfer --allow-unfunded-recipient --fund-recipient  ${MINT1_ADDRESS} 100 ${MINT1_FAUCET_ADDRESS}
+#spl-token create-token ${SCRIPT_PATH}/sample_accounts/prize-nft1-keypair.json --decimals 0
+#spl-token create-account ${NFT1_ADDRESS}
+#spl-token mint ${NFT1_ADDRESS} 1
+#
+#spl-token create-token ${SCRIPT_PATH}/sample_accounts/prize-nft2-keypair.json --decimals 0
+#spl-token create-account ${NFT2_ADDRESS}
+#spl-token mint ${NFT2_ADDRESS} 1
+#
+#spl-token create-token ${SCRIPT_PATH}/sample_accounts/dev-mint-keypair.json --decimals 6
+#spl-token create-account ${MINT1_ADDRESS}
+#spl-token mint ${MINT1_ADDRESS} 3000000
+#
+#solana transfer --allow-unfunded-recipient ${MINT1_FAUCET_ADDRESS} 100
+#spl-token transfer --allow-unfunded-recipient --fund-recipient  ${MINT1_ADDRESS} 100 ${MINT1_FAUCET_ADDRESS}
 
 echo "Creating sample raffles..."
 cd ${ROOT_PATH}

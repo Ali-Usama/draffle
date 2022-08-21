@@ -91,7 +91,7 @@ pub struct Opts {
 pub fn entry(opts: Opts) -> Result<()> {
     let wallet = match opts.cfg_override.wallet {
         Some(wallet) => wallet,
-        None => shellexpand::tilde("~/.config/solana/id.json").to_string(),
+        None => shellexpand::tilde("/home/axiom/Desktop/Workspace/Axiom/BLOCKCHAIN/Learning/SeCbhUgwfifKUVc3Ut5Z7hRCRMsPyFr1Z4hyargXYYv.json").to_string(),
     };
 
     // Client setup
@@ -198,6 +198,7 @@ fn create_raffle(
     println!("Raffle address: {:}", raffle);
     let (proceeds, _) =
         Pubkey::find_program_address(&[raffle.key().as_ref(), b"proceeds".as_ref()], &program_id);
+    println!("Proceeds: {}", proceeds);
 
     // Request arguments
     let clock = deserialize::<Clock>(
@@ -216,6 +217,7 @@ fn create_raffle(
     );
     let max_entrants = max_entrants.unwrap_or(draffle::ENTRANTS_SIZE);
     let entrants_account_size = 8 + 4 + 4 + 32 * max_entrants as usize;
+    println!("Entrants size: {}", entrants_account_size);
     program_client
         .request()
         .instruction(system_instruction::create_account(
@@ -244,7 +246,7 @@ fn create_raffle(
         })
         .signer(&entrants_keypair)
         .send()?;
-
+    println!("Ended instruction");
     Ok(())
 }
 
